@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en-GB" class="respect-color-scheme-preference">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,6 +29,7 @@ img.emoji {
 <style id="wp-block-library-theme-inline-css">#start-resizable-editor-section{display:none}.wp-block-audio figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-audio figcaption{color:hsla(0,0%,100%,.65)}.wp-block-code{font-family:Menlo,Consolas,monaco,monospace;color:#1e1e1e;padding:.8em 1em;border:1px solid #ddd;border-radius:4px}.wp-block-embed figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-embed figcaption{color:hsla(0,0%,100%,.65)}.blocks-gallery-caption{color:#555;font-size:13px;text-align:center}.is-dark-theme .blocks-gallery-caption{color:hsla(0,0%,100%,.65)}.wp-block-image figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-image figcaption{color:hsla(0,0%,100%,.65)}.wp-block-pullquote{border-top:4px solid;border-bottom:4px solid;margin-bottom:1.75em;color:currentColor}.wp-block-pullquote__citation,.wp-block-pullquote cite,.wp-block-pullquote footer{color:currentColor;text-transform:uppercase;font-size:.8125em;font-style:normal}.wp-block-quote{border-left:.25em solid;margin:0 0 1.75em;padding-left:1em}.wp-block-quote cite,.wp-block-quote footer{color:currentColor;font-size:.8125em;position:relative;font-style:normal}.wp-block-quote.has-text-align-right{border-left:none;border-right:.25em solid;padding-left:0;padding-right:1em}.wp-block-quote.has-text-align-center{border:none;padding-left:0}.wp-block-quote.is-large,.wp-block-quote.is-style-large{border:none}.wp-block-search .wp-block-search__label{font-weight:700}.wp-block-group.has-background{padding:1.25em 2.375em;margin-top:0;margin-bottom:0}.wp-block-separator{border:none;border-bottom:2px solid;margin-left:auto;margin-right:auto;opacity:.4}.wp-block-separator:not(.is-style-wide):not(.is-style-dots){width:100px}.wp-block-separator.has-background:not(.is-style-dots){border-bottom:none;height:1px}.wp-block-separator.has-background:not(.is-style-wide):not(.is-style-dots){height:2px}.wp-block-table thead{border-bottom:3px solid}.wp-block-table tfoot{border-top:3px solid}.wp-block-table td,.wp-block-table th{padding:.5em;border:1px solid;word-break:normal}.wp-block-table figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-table figcaption{color:hsla(0,0%,100%,.65)}.wp-block-video figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-video figcaption{color:hsla(0,0%,100%,.65)}.wp-block-template-part.has-background{padding:1.25em 2.375em;margin-top:0;margin-bottom:0}#end-resizable-editor-section{display:none}</style>
 <link rel="stylesheet" id="twenty-twenty-one-style-css" href="https://poesmadd.github.io/st-marks-lgbtqa-support/wp-content/themes/twentytwentyone/style.css?ver=1.3" media="all">
 <link rel="stylesheet" id="twenty-twenty-one-print-style-css" href="https://poesmadd.github.io/st-marks-lgbtqa-support/wp-content/themes/twentytwentyone/assets/css/print.css?ver=1.3" media="print">
+<link rel="stylesheet" id="tt1-dark-mode-css" href="https://poesmadd.github.io/st-marks-lgbtqa-support/wp-content/themes/twentytwentyone/assets/css/style-dark-mode.css?ver=1.3" media="all">
 <link rel="https://api.w.org/" href="https://poesmadd.github.io/st-marks-lgbtqa-support/wp-json/">
 <link rel="alternate" type="application/json" href="https://poesmadd.github.io/st-marks-lgbtqa-support/wp-json/wp/v2/users/1">
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://poesmadd.github.io/st-marks-lgbtqa-support/xmlrpc.php?rsd">
@@ -133,7 +134,88 @@ img.emoji {
 </div>
 <!-- #page -->
 
-<script>document.body.classList.remove("no-js");</script>	<script>
+<script>document.body.classList.remove("no-js");</script><button id="dark-mode-toggler" class="fixed-bottom" aria-pressed="false" onclick="toggleDarkMode()">Dark Mode: <span aria-hidden="true"></span></button>		<style>#dark-mode-toggler > span {
+				margin-left: 5px;
+			}
+			#dark-mode-toggler > span::before {
+				content: 'Off';
+			}
+			#dark-mode-toggler[aria-pressed="true"] > span::before {
+				content: 'On';
+			}</style>
+
+		<script>function toggleDarkMode() { // jshint ignore:line
+	var toggler = document.getElementById( 'dark-mode-toggler' );
+
+	if ( 'false' === toggler.getAttribute( 'aria-pressed' ) ) {
+		toggler.setAttribute( 'aria-pressed', 'true' );
+		document.documentElement.classList.add( 'is-dark-theme' );
+		document.body.classList.add( 'is-dark-theme' );
+		window.localStorage.setItem( 'twentytwentyoneDarkMode', 'yes' );
+	} else {
+		toggler.setAttribute( 'aria-pressed', 'false' );
+		document.documentElement.classList.remove( 'is-dark-theme' );
+		document.body.classList.remove( 'is-dark-theme' );
+		window.localStorage.setItem( 'twentytwentyoneDarkMode', 'no' );
+	}
+}
+
+function twentytwentyoneIsDarkMode() {
+	var isDarkMode = window.matchMedia( '(prefers-color-scheme: dark)' ).matches;
+
+	if ( 'yes' === window.localStorage.getItem( 'twentytwentyoneDarkMode' ) ) {
+		isDarkMode = true;
+	} else if ( 'no' === window.localStorage.getItem( 'twentytwentyoneDarkMode' ) ) {
+		isDarkMode = false;
+	}
+
+	return isDarkMode;
+}
+
+function darkModeInitialLoad() {
+	var toggler = document.getElementById( 'dark-mode-toggler' ),
+		isDarkMode = twentytwentyoneIsDarkMode();
+
+	if ( isDarkMode ) {
+		document.documentElement.classList.add( 'is-dark-theme' );
+		document.body.classList.add( 'is-dark-theme' );
+	} else {
+		document.documentElement.classList.remove( 'is-dark-theme' );
+		document.body.classList.remove( 'is-dark-theme' );
+	}
+
+	if ( toggler && isDarkMode ) {
+		toggler.setAttribute( 'aria-pressed', 'true' );
+	}
+}
+
+function darkModeRepositionTogglerOnScroll() {
+
+	var toggler = document.getElementById( 'dark-mode-toggler' ),
+		prevScroll = window.scrollY || document.documentElement.scrollTop,
+		currentScroll,
+
+		checkScroll = function() {
+			currentScroll = window.scrollY || document.documentElement.scrollTop;
+			if (
+				currentScroll + ( window.innerHeight * 1.5 ) > document.body.clientHeight ||
+				currentScroll < prevScroll
+			) {
+				toggler.classList.remove( 'hide' );
+			} else if ( currentScroll > prevScroll && 250 < currentScroll ) {
+				toggler.classList.add( 'hide' );
+			}
+			prevScroll = currentScroll;
+		};
+
+	if ( toggler ) {
+		window.addEventListener( 'scroll', checkScroll );
+	}
+}
+
+darkModeInitialLoad();
+darkModeRepositionTogglerOnScroll();
+</script>	<script>
 	if ( -1 !== navigator.userAgent.indexOf( 'MSIE' ) || -1 !== navigator.appVersion.indexOf( 'Trident/' ) ) {
 		document.body.classList.add( 'is-IE' );
 	}
